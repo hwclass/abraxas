@@ -6,9 +6,7 @@
   "scripts": {
     "dev": "next",
     "start": "next start",
-    "build": "next build && next-build-id",
-    "create-hash": "echo {\\\"app.js\\\":{\\\"hash\\\":\\\"xxxx\\\"}} > .next/build-stats.json",
-    "prod": "npm run build && next-build-id && NODE_ENV=production node server.js"
+    "build": "next build && NODE_ENV=production node server.js"
   },
   "keywords": [],
   "author": "Baris Guler <harderworking.class@gmail.com> (https://www.github.com/hwclass)",
@@ -19,8 +17,5 @@
     "react": "16.2.0",
     "react-dom": "16.2.0",
     "sw-precache-webpack-plugin": "0.11.4"
-  },
-  "devDependencies": {
-    "next-build-id": "1.0.0"
   }
 }
