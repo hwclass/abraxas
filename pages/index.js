@@ -2,14 +2,11 @@ import 'isomorphic-fetch'
 
 import Layout from '../components/Layout'
 import Map from '../components/Map'
+import RadiusSlider from '../components/RadiusSlider'
+import SearchBox from '../components/SearchBox'
+import GeojsonOutput from '../components/GeojsonOutput'
 
 export default class extends React.PureComponent {
-  static async getInitialProps() {
-    const req = await fetch(`https://api.hackerwebapp.com/news`)
-    const stories = await req.json()
-    return { stories }
-  }
-  
   componentDidMount () {
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker
@@ -25,17 +22,18 @@ export default class extends React.PureComponent {
   }
 
   render() {
-    return <Layout title="Latest News">
+    return <Layout title="Abraxas">
       <div>
-        <h1>Latest News</h1>
-        {
-          this.props.stories.map((story) => (
-            <h2 key={Math.random()}>
-              <a href={ story.url }>{ story.title }</a>
-            </h2>
-          ))
-        }
-        <Map/>
+        {/* Components here... */}
+        <Map
+          googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+          loadingElement={<div style={{ height: `100%` }} />}
+          containerElement={<div style={{ height: `400px` }} />}
+          mapElement={<div style={{ height: `100%` }} />}
+        />
+        <RadiusSlider/>
+          <SearchBox/>
+          <GeojsonOutput/>
         <style jsx>{`
           h1 {
            font-family: system-ui;
@@ -44,8 +42,10 @@ export default class extends React.PureComponent {
           }
         `}</style>
         <style global jsx>{`
-          padding: 0;
-          margin: 0;
+          html, body {
+            padding: 0;
+            margin: 0;
+          }
         `}</style>
       </div>
     </Layout>

@@ -16,6 +16,9 @@
     "next": "4.2.3",
     "react": "16.2.0",
     "react-dom": "16.2.0",
+    "react-google-maps": "9.4.5",
+    "react-icons": "2.2.7",
+    "react-place": "0.6.2",
     "sw-precache-webpack-plugin": "0.11.4"
   }
 }
